@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+		<link rel="stylesheet" type="text/css" href="../../css/base.css" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/home.css"/>
+	</head>
+
+	<body>
+		<div id="app" class="mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<div class="header"></div>
+				<div class="main">
+					<div class="card base-flex-horizontal main-padding">
+						<div v-for="(item,index) in cardList" class="item base-flex-vertical" @tap="cardItemClick(item.id)">
+							<img class="icon" :src="item.imgurl" />
+							<div class="desc">{{item.title}}</div>
+						</div>						
+					</div>
+					<div style="background-color: #FFFFFF;" class="main-paddings">
+						<div class="subtitle base-flex-horizontal">
+							<div class="hline"></div>
+							<div class="title">消息中心</div>
+						</div>
+						<div class="message base-flex-horizontal">
+							<div v-for="(item,index) in mesList" class="item base-flex-vertical" @tap="mesItemClick(item.id)">
+								<div class="badge  base-flex-center" v-if="item.mescount !== 0">{{item.mescount}}</div>
+								<img class="backimg" :src="item.imgurl" />
+								<img class="icon" :src="item.iconurl"/>
+								<div class="desc">{{item.title}}</div>
+							</div>
+						</div>
+					</div>
+					<div style="background-color: #FFFFFF;" class="main-paddings">
+						<div class="subtitle base-flex-horizontal">
+							<div class="hline"></div>
+							<div class="title">待办事项</div>
+						</div>
+						<div class="list">
+							<ul class="mui-table-view mui-clearfix">
+								<li v-for="(item,index) in routineList" class="mui-table-view-cell" @tap="routineItemClick(item.id)">
+									<div class="mui-navigate-right base-flex-horizontal">
+										<div class="dot">·</div>{{item.title}}<div class="badge">{{item.mescount}}</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/lib/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/lib/browser.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../config.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/app.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/babel" charset="UTF-8">
+			mui.init();
+			//初始化区域滑动
+			mui('.mui-scroll-wrapper').scroll({
+				deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
+			});
+			apptools.backQuit();
+			var vm=new Vue({
+				el:"#app",
+				data:{
+					cardList:[
+						{ id:1,title:"设备管理",imgurl:"../../images/pics/equip.png"},
+						{ id:2,title:"支架管理",imgurl:"../../images/pics/support.png"},
+						{ id:3,title:"备件管理",imgurl:"../../images/pics/spare.png"},
+						{ id:4,title:"文件管理",imgurl:"../../images/pics/paper.png"},
+					],
+					mesList:[												
+						{ id:1,title:"系统消息",mescount:3,imgurl:"../../images/pics/system.png",iconurl:"../../images/pics/system-icon.png" },
+						{ id:2,title:"部门通知",mescount:0,imgurl:"../../images/pics/department.png",iconurl:"../../images/pics/department-icon.png" },
+					],
+					routineList:[
+						{ id:1,title:"前期准备审批",mescount:2 },
+						{ id:2,title:"实验申请",mescount:1 },
+						{ id:3,title:"实验审批",mescount:4 },
+						{ id:4,title:"加急审批",mescount:5 },
+					]
+				},				
+				methods:{
+					cardItemClick:function(id){
+						switch(id){
+							case 1:{
+								webtool.openWindow('home-equip');
+								break;
+							}
+							case 2:{
+								webtool.openWindow('home-support');
+								break;
+							}
+							case 3:{
+								webtool.openWindow('home-spare');
+								break;
+							}
+						}						
+					},
+					mesItemClick:function(id){
+						switch(id){
+							case 2:{
+								webtool.openWindow('home-department');
+							}
+						}
+					},
+					routineItemClick:function(id){
+						alert("点击的id"+id)
+					}
+				}			
+			})
+		</script>
+	</body>
+
+</html>

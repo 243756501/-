@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+	<title></title>
+	<link href="../../css/mui.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="../../css/base.css"/>
+	<style>
+		.mui-tab-item img {
+			width: 0.35rem;
+		}
+
+		.mui-tab-label {
+			font-size: 0.15rem;
+			line-height: 0.13rem;
+		}
+        .mui-bar{
+			background-color: #FFFFFF !important;
+		}
+		.mui-bar-tab .mui-tab-item.mui-active {
+			color: #179ffe;
+		}
+	</style>
+</head>
+
+<body>
+	<nav id="app" class="mui-bar mui-bar-tab">
+		<a v-for="(item,index) in navItemList"  :class="['mui-tab-item',activeIndex==index ? 'mui-active': '']" @tap="navItemClick(index)">
+			<img :src="item.normalUrl">
+			<div class="mui-tab-label">{{item.title}}</div>
+		</a>		
+	</nav>
+	<script src="../../js/mui.min.js"></script>
+	<script src="../../js/lib/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../config.js" type="text/javascript"></script>
+	<script src="../../js/app.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/lib/browser.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/babel" charset="utf-8">
+		mui.init();
+		
+		var page=["../home/home.html","../laboratory/laboratory.html","../sample/sample.html","../ucenter/ucenter.html"]
+		
+		var vm=new Vue({
+			el:"#app",
+			data:{
+				navItemList:[
+					{id:"home",title:"主页",normalUrl:"../../images/icon/home.png",activeUrl:"../../images/icon/home-active.png"},
+					{id:"laboratory",title:"实验室",normalUrl:"../../images/icon/laboratory.png",activeUrl:"../../images/icon/laboratory-active.png"},
+					{id:"sample",title:"样品",normalUrl:"../../images/icon/sample.png",activeUrl:"../../images/icon/sample-active.png"},
+					{id:"ucenter",title:"我的",normalUrl:"../../images/icon/ucneter.png",activeUrl:"../../images/icon/ucenter-active.png"},
+				],
+				activeIndex: 0,			
+				targetIndex: 5
+			},
+			created:function(){				
+			},
+			mounted:function(){
+				document.querySelectorAll('img')[0].src=this.navItemList[0].activeUrl;
+			},
+			methods:{
+				//底部导航栏点击切换相关事件
+				navItemClick:function(index){					
+					this.targetIndex=index;
+					mui.each(document.querySelectorAll('img'),(index,item)=>{
+						if(index==this.targetIndex){						
+							item.src=this.navItemList[index].activeUrl;						
+						}else{
+							item.src=this.navItemList[index].normalUrl;								
+						}		
+														
+					});
+					if(this.activeIndex !== this.targetIndex){						
+						plus.webview.getWebviewById(page[this.activeIndex]).hide();
+						plus.webview.getWebviewById(page[this.targetIndex]).show();
+						this.activeIndex=this.targetIndex;	
+					}				
+				}
+			}
+		});
+		apptools.backQuit();
+		mui.plusReady(function(){
+			//预加载页面
+			var wb=plus.webview.getLaunchWebview();
+			let index=0;
+			for(let i=0;i<page.length; i++){
+				let pageStyle;
+				if(i==0 || i==3){
+					pageStyle={top:'0px',bottom:'52px'} 
+				}else{
+					pageStyle={top:'0px',bottom:'52px',statusbar: { background: CONFIG.IMMERSTION_COLOR }};
+				}
+				let fragment=plus.webview.create(
+					page[i],
+					page[i],					
+					pageStyle					
+				);
+				if(index !== i){
+					fragment.hide();		
+				}				
+				wb.append(fragment);									
+			}
+		})
+	</script>
+</body>
+
+</html>

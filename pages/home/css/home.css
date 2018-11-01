@@ -1,0 +1,134 @@
+.header {
+	height: 3rem;
+	background: url(../../../images/pics/home-banner.png) no-repeat;
+	background-size: 100% 100%;
+}
+
+.main {
+	position: relative;
+	top: -.7rem;
+}
+
+.main-padding{
+	width: 95%;
+	margin: 0 auto;
+}
+.main-paddings{
+	padding: 0 3%;
+}
+.card {
+	border-radius: .25rem;
+	height: 1.45rem;
+	background-color: #FFFFFF;
+	box-shadow: 0 0 .1rem #BBBBBB;
+	width: 95%;
+	margin: 0 auto;
+}
+
+.card .item {
+	flex: 1;
+}
+
+.card .icon {
+	width: .7rem;
+	height: .7rem;
+}
+
+.card .desc {
+	font-size: .2rem;
+	margin-top: .1rem;
+	position: relative;
+}
+
+.subtitle {
+	height: .5rem;
+	margin: .15rem 0;
+}
+
+.subtitle .hline {
+	width: .05rem;
+	height: .25rem;
+	background-color: #179FFE;
+	position: relative;
+	left: .05rem;
+}
+
+.subtitle .title {
+	margin-left: .2rem;
+	font-size: .22rem;
+	color: #6D6D72;
+}
+
+.message {
+	justify-content: space-between;
+	width: 80%;
+	margin: 0 auto;
+	position: relative;
+	padding-bottom: .1rem;
+}
+
+.message .item {
+	position: relative;
+}
+
+.message .item .backimg {
+	width: 1.8rem;
+	height: .95rem;
+}
+
+.message .item .icon{
+	position: absolute;
+	width: .75rem;
+	height: .75rem;
+	top: -.4rem;left: 0;right: 0;bottom: 0;
+	margin: auto;
+}
+
+.message .item .desc {
+	font-size: .22rem;
+	margin-top: .1rem;
+}
+
+.message .item .badge {
+	width: .35rem;
+	height: .35rem;
+	font-size: .2rem;
+	border-radius: 50%;
+	position: absolute;
+	background-color: #179FFE;
+	color: #FFFFFF;
+	right: -.15rem;
+	top: -.15rem;
+}
+
+.mui-table-view-cell {
+	padding: .1rem 0px;
+	border-bottom: 1px solid #e6e6e6;
+}
+
+.list {
+	font-size: .22rem;
+}
+
+.list .dot {
+	margin-right: .12rem;
+	font-weight: bold;
+	font-size: .35rem;
+}
+
+.list .badge {
+	position: absolute;
+	right: .4rem;
+	top: .12rem;
+	color: #BBBBBB;
+	font-size: .16rem;
+}
+
+.mui-navigate-right:after,
+.mui-push-right:after {
+	right: 0 !important;
+}
+
+.mui-table-view-cell:after {
+	background-color: #FFFFFF !important;
+}

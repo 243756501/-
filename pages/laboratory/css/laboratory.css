@@ -1,0 +1,40 @@
+.mui-slider-indicator.mui-segmented-control {
+	background-color: #FFFFFF;
+	font-size: .2rem;
+	color: #AAAAAA;
+	margin: .15rem 0;
+}
+
+.mui-slider .mui-segmented-control.mui-segmented-control-inverted~.mui-slider-group .mui-slider-item {
+	border: none !important;
+}
+
+.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
+	color: #179FFE;
+	border-bottom: 2px solid #179FFE !important;
+}
+
+.mui-segmented-control.mui-segmented-control-inverted .mui-control-item {
+	margin: 0 .3rem;
+	display: inline-table !important;
+}
+
+.mui-fullscreen .mui-segmented-control~.mui-slider-group {
+	top: 50px;
+}
+
+.line {
+	font-size: .2rem;
+}
+
+.line .desc {
+	color: #AAAAAA;
+	margin-right: .1rem;
+}
+
+.mui-table-view-cell {
+	padding: 5px 15px;
+}
+.mui-pull-bottom-tips {
+	background-color: #FFFFFF !important;
+}

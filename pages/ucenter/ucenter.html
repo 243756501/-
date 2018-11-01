@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../../css/base.css" />
+    <link rel="stylesheet" type="text/css" href="css/ucenter.css"/>
+	</head>
+
+	<body>
+		<div id="app">
+			<div class="header">
+				<div class="bg"></div>
+				<div class="main">
+					<img src="../../images/pics/ucenter-set.png" class="set" />
+					<div class="container base-flex-center">
+						  <img src="../../images/pics/default-avatar.jpg" class="avatar"/>
+							<img src="../../images/pics/ucenter-online.png" class="dot"/>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+    <div class="list">
+      <div class="card">
+					<div class="base-flex-between">
+						<div class="base-flex-horizontal">
+							<diV class="desc">管理员:</div>
+							<diV>00001</div>
+						</div>
+						<div>2018-06-05</div>
+					</div>
+					<div class="base-flex-horizontal">
+						<div class="desc">ID:</div>
+						<div>201320100127</div>
+					</div>
+			</div>
+			<ul class="mui-table-view menu mui-clearfix">
+					<li class="mui-table-view-cell item">
+						<div class="mui-navigate-right base-flex-horizontal">
+							<img src="../../images/pics/ucenter-chpwd.png" class="icon">
+							<div>修改密码</div>
+						</div>
+					</li>	
+						<li class="mui-table-view-cell item base-clear-border">
+							<div class="mui-navigate-right base-flex-horizontal">
+								<img src="../../images/pics/ucenter-update.png" class="icon">
+								<div>版本升级</div>
+							</div>
+						</li>	
+							<li class="mui-table-view-cell item quit base-clear-border">
+								<div class="mui-navigate-right base-flex-horizontal">
+									<img src="../../images/pics/ucenter-quit.png" class="icon">
+									<div>退出登录</div>
+								</div>
+							</li>		
+				</ul>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/lib/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/lib/browser.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../config.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/app.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/babel" charset="UTF-8">
+			mui.init();
+			apptools.backQuit();
+			var vm=new Vue({
+				el:"#app",
+				data:{
+					
+				},				
+				methods:{
+					
+				}			
+			})			
+		</script>
+	</body>
+
+</html>
