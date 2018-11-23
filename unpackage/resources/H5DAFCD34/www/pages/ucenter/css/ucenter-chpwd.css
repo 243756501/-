@@ -1,0 +1,26 @@
+.main {
+	width: 95%;
+	margin: 0 auto;
+	font-size: .22rem !important;
+	padding:  .25rem;
+	margin-top: 55px;
+	border-radius: .15rem;
+}
+
+.line {
+	margin: .25rem 0;
+}
+
+input {
+	margin-top: .15rem;
+	margin-bottom: 0 !important;
+}
+
+.line button {
+	background-color: #179FFE;
+	border: 0;
+	color: #FFFFFF;
+	width: 100%;
+	margin-top: .3rem;
+	height: .75rem;
+}

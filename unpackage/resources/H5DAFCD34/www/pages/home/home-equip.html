@@ -1,0 +1,150 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../../css/base.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/lib/pull-top-tips.css" />
+		<link rel="stylesheet" type="text/css" href="css/home-spare.css" />
+		<style>
+			.info{
+				font-size: .22rem;
+			}
+			.mui-table-view-cell .show .info{
+				height: .85rem;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">设备管理</h1>
+		</header>
+		<div id="app" class="mui-content">
+			<div class="search">
+				<div class="line base-flex-horizontal">
+					<input type="text" placeholder="请输入设备名称/编号" v-model="searchWords">
+					<div class="container base-flex-center" @tap="searchEvent()">
+						<img src="../../images/icon/search.png" class="icon" />
+					</div>
+				</div>
+			</div>
+			<div class="mui-scroll-wrapper">
+				<div class="mui-scroll">
+					<ul class="mui-table-view mui-clearfix">
+						<li class="mui-table-view-cell mui-collapse">
+							<a class="show" @tap="itemShowEvent(0)">								
+								<div class="info">
+									<div class="line base-flex-between head">
+										<div>毫欧表</div>
+										<div class="desc">正常</div>
+									</div>
+									<div class="line base-flex-between">
+										<div class="base-flex-horizontal">
+											<div class="desc">编号：</div>
+											<div>QBK-CL-301</div>
+										</div>
+									</div>
+								</div>
+								<div class="tool base-flex-between" v-if="activeIndex !== 0">
+									<div>基本信息</div>
+									<div class="action">展开 <i class="mui-icon mui-icon-arrowright"></i></div>
+								</div>
+							</a>
+							<div class="mui-collapse-content">
+								<div class="base-flex-between line">
+									<div>设备编号</div>
+									<div>QBK-OL-301</div>
+								</div>
+								<div class="base-flex-between line">
+									<div>规格型号</div>
+									<div>MF-120</div>
+								</div>
+								<div class="base-flex-between line">
+									<div>生产厂家</div>
+									<div>001-45</div>
+								</div>
+								<div class="base-flex-between line">
+									<div>校准周期</div>
+									<div>50</div>
+								</div>
+								<div class="base-flex-between line">
+									<div>负责人</div>
+									<div>周小米</div>
+								</div>
+								<div class="base-flex-between line">
+									<div>下次保养时间</div>
+									<div>2018-06-04</div>
+								</div>
+								<div class="base-flex-between line">
+									<div>设备状态</div>
+									<div>正常</div>
+								</div>
+								<div class="base-flex-between line" @tap="pickUpEvent()">
+									<div class="split"></div>
+									<div class="action">收起 <i class="mui-icon mui-icon-arrowup"></i></div>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/lib/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/lib/browser.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../config.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/app.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/lib/mui.pullToRefresh.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/lib/mui.pullToRefresh.material.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/babel" charset="UTF-8">
+			mui.init();
+			var vm=new Vue({
+				el:"#app",
+				data:{
+					searchWords:"",
+					activeIndex:2
+				},				
+				methods:{
+					searchEvent:function(){
+						alert("搜索的关键字:  "+this.searchWords)
+					},
+					itemShowEvent:function(index){
+						this.activeIndex==index ? this.activeIndex= -1 : this.activeIndex=index;				
+					},
+					pickUpEvent:function(){
+						mui.each(document.querySelectorAll('.mui-table-view-cell'),function(index,item){
+							item.setAttribute('class',"mui-table-view-cell mui-collapse");
+						})
+					},
+				}			
+			});
+			mui('.mui-scroll').pullToRefresh({
+				up:{
+					callback:function(){
+						let pullObj=this;
+						pullObj.endPullUpToRefresh(true);
+					}
+				},
+				down:{
+					callback:function(){
+						let pullObj=this;
+						pullObj.endPullDownToRefresh(true);
+					}
+				}
+			})
+				//初始化滑动
+				mui('.mui-scroll-wrapper').scroll();
+				//ios软键盘不会自动关闭
+				apptools.iosBlur();
+				webtool.backQuit();
+			
+		</script>
+	</body>
+
+</html>

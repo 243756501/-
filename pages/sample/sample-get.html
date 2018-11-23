@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../../css/base.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/lib/pull-top-tips.css" />
+		<link rel="stylesheet" type="text/css" href="../laboratory/css/laboratory.css"/>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-icon mui-action-back mui-icon-back"></a>
+			<h1 class="mui-title">检测领样</h1>
+			<img src="../../images/icon/search.png" class="right">
+		</header>
+		<div class="mui-content">
+			<div id="slider" class="mui-slider  mui-fullscreen">
+				<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+					<a v-for="(item,index) in swipeList" :class="['mui-control-item',activeIndex==index ? 'mui-active':'']" :href="['#'+item.linkhref]">
+						{{item.title}}
+					</a>
+				</div>
+				<div class="mui-slider-group">
+					<div v-for="(item,index) in swipeList" :id="[item.linkhref]" :class="['mui-slider-item mui-control-content',activeIndex==index? 'mui-active':'']">
+						<div class="mui-scroll-wrapper">
+							<div :id="item.id" class="mui-scroll">
+								<ul class="mui-table-view">
+									<li class="mui-table-view-cell base-border-bottom" @tap="sampleItemClick()">
+										<div class="line base-flex-horizontal">										
+											<div>迈锐宝</div>
+										</div>
+										<div class="line base-flex-between">
+											<div class="base-flex-horizontal">
+												<div class="desc">流水号:</div>
+												<div>20171114-01</div>
+											</div>
+											<div>2018-6-5 10：00</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/lib/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/lib/browser.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../config.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/app.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/lib/mui.pullToRefresh.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/lib/mui.pullToRefresh.material.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/babel" charset="UTF-8">
+			mui.init();
+			//初始化区域滑动
+			mui('.mui-scroll-wrapper').scroll({
+				deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
+			});
+			webtool.backQuit();
+			var vm=new Vue({
+				el:"#slider",
+				data:{
+					activeIndex:0,
+					postInfo:{
+						page:1,//当前页面数
+						pageSize:10,//分页条数
+					},
+					swipeList:[
+						{ id:1,title:"待领样",linkhref:"item1mobile1",datalist:[] },
+						{ id:2,title:"已领样",linkhref:"item2mobile",datalist:[] },
+					],
+					
+				},		
+				methods:{
+					//领样列表点击事件
+					sampleItemClick:function(){
+						webtool.openWindow('sample-get-detail');
+					}
+				}			
+			})
+			//vue默认模式是异步渲染。就是你修改了data之后，不是立刻开始渲染DOM结构，而是异步执行。解决vue+滑动组件的冲突问题
+			vm.$nextTick(function () {
+              //DOM 现在更新了
+              mui("#slider").slider();			 
+            })
+
+			//上下拉初始事件
+			mui.each(document.querySelectorAll('.mui-scroll'),function(index,item){
+				mui(item).pullToRefresh({
+					up:{
+						callback:function(){
+							var pullObj=this;
+							pullObj.endPullUpToRefresh(true);
+						}
+					},
+					down:{
+						callback:function(){
+							var pullObj=this;
+							setTimeout(function(){	pullObj.endPullDownToRefresh(true);},500)						
+						}
+					}
+				})
+			})
+			//监听左右滑动事件
+			mui('.mui-slider')[0].addEventListener('slide',function(e){
+				let index=event.detail.slideNumber;
+			    vm.activeIndex=index;
+				var pullRefreshView = mui('.mui-scroll')[index];				
+			    mui(pullRefreshView).pullToRefresh().pullDownLoading();		          
+			})
+		</script>
+	</body>
+
+</html>

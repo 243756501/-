@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../../css/base.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/lib/pull-top-tips.css" />
+		<link rel="stylesheet" type="text/css" href="css/laboratory-detail.css"/>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-icon mui-icon-back mui-action-back"></a>
+			<h1 class="mui-title">基本信息</h1>
+		</header>
+		<div id="app" class="mui-scroll-wrapper base-content">
+			<div class="mui-scroll">
+				<div class="card" style="flex: 1;">
+					<div class="line base-flex-between">
+						<div>流水号</div>
+						<div>20171114-01</div>
+					</div>
+					<div class="line base-flex-between">
+						<div>项目编号</div>
+						<div>2017-169</div>
+					</div>
+					<div class="line base-flex-between">
+						<div>厂家名称</div>
+						<div>佳美达玩具有限公司</div>
+					</div>
+					<div class="line base-flex-between">
+						<div>车型名称</div>
+						<div>迈锐宝</div>
+					</div>
+					<div class="line base-flex-between">
+						<div>灯具名称</div>
+						<div>前照明美国向</div>
+					</div>
+					<div class="line base-flex-between">
+						<div>确认人</div>
+						<div>管理员</div>
+					</div>
+					<div class="line base-flex-between">
+						<div>确认时间</div>
+						<div>2018-6-5 09：30</div>
+					</div>
+					<div class="line base-flex-between">
+						<div>最后修改人</div>
+						<div>张国宝</div>
+					</div>
+					<div class="line base-flex-between">
+						<div>最后修改时间</div>
+						<div>2018-6-5 09：30</div>
+					</div>
+					<div class="line base-flex-between btnline">
+						<button>提交</button><button>查看</button><button>转向</button><button>收样</button><button @tap="labReturnClick()">退回</button>
+					</div>
+				</div>
+			    <div class="extra base-bg-white">
+					<div class="title base-border-bottom">试验项目</div>
+					<div class="list">
+						<div class="item base-border-bottom" @tap="labItemClick()">
+							<div>配光性能</div>
+							<div class="base-flex-between bottom">
+								<div class="desc">运行标准:GL-2047</div>
+								<div class="state">加急</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/lib/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/lib/browser.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../config.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/app.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/lib/mui.pullToRefresh.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/lib/mui.pullToRefresh.material.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/babel" charset="UTF-8">
+			mui.init();
+			mui.plusReady(function(){})
+			//初始化区域滑动
+			mui('.mui-scroll-wrapper').scroll({
+				deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
+			});
+			webtool.backQuit();
+			var vm=new Vue({
+				el:"#app",
+				data:{
+					
+					
+				},		
+				methods:{
+					labReturnClick:function(){
+						webtool.openWindow('laboratory-detail-return');
+					},
+					labItemClick:function(){
+						webtool.openWindow('laboratory-detail-list');
+					}
+				}			
+			})
+			//vue默认模式是异步渲染。就是你修改了data之后，不是立刻开始渲染DOM结构，而是异步执行。解决vue+滑动组件的冲突问题
+			vm.$nextTick(function () {
+             	 
+            })
+
+			
+		</script>
+	</body>
+
+</html>

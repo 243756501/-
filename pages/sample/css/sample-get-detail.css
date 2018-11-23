@@ -1,0 +1,47 @@
+.card {
+	margin-top: .18rem;
+	padding: .15rem .39rem;
+	font-size: .24rem;
+	color: rgba(162, 162, 162, 1);
+	font-weight: 400;
+	font-family: SourceHanSansCN-Regular;
+	background-color: #FFFFFF;
+}
+
+.card .line {
+	margin-bottom: .13rem;
+	font-size: .24rem;
+	color: #000;
+}
+
+#slider {
+	margin-top: .15rem;
+}
+
+#slider .line {
+	font-size: .24rem;
+	color: #000;
+}
+
+#slider .line .desc {
+	color: rgba(162, 162, 162, 1);
+}
+
+.mui-segmented-control.mui-segmented-control-inverted .mui-control-item {
+	font-size: .24rem !important;
+}
+
+.mui-fullscreen .mui-segmented-control~.mui-slider-group {
+	position: inherit !important;
+	top: 0 !important;
+}
+#sliderSegmentedControl{
+	display: flex !important; 
+}
+.mui-segmented-control.mui-segmented-control-inverted .mui-control-item{
+	flex: 1;
+	display: flex !important;
+	justify-content: center;
+    margin: 0 .59rem;
+	font-size: .28rem !important;
+}

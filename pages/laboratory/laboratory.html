@@ -8,46 +8,51 @@
 		<link href="../../css/mui.min.css" rel="stylesheet" />
 		<link rel="stylesheet" type="text/css" href="../../css/base.css" />
 		<link rel="stylesheet" type="text/css" href="../../css/lib/pull-top-tips.css" />
-		<link rel="stylesheet" type="text/css" href="css/laboratory.css"/>
+		<link rel="stylesheet" type="text/css" href="css/laboratory.css" />
 	</head>
 
-	<body style="background-color: #FFFFFF;">
-		<header class="mui-bar mui-bar-nav">
-			<h1 class="mui-title">实验室确认</h1>
-			<img src="../../images/icon/search.png" class="right">
-		</header>
-		<div class="mui-content">
-			<div id="slider" class="mui-slider  mui-fullscreen">
-				<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
-					<a v-for="(item,index) in swipeList" :class="['mui-control-item',activeIndex==index ? 'mui-active':'']" :href="['#'+item.linkhref]">
-						{{item.title}}
-					</a>
-				</div>
-				<div class="mui-slider-group">
-					<div v-for="(item,index) in swipeList" :id="[item.linkhref]" :class="['mui-slider-item mui-control-content',activeIndex==index? 'mui-active':'']">
-						<div class="mui-scroll-wrapper">
-							<div :id="item.id" class="mui-scroll">
-								<ul class="mui-table-view">
-									<li class="mui-table-view-cell base-border-bottom">
-										<div class="line base-flex-horizontal">
-											<div class="desc">灯具名称:</div>
-											<div>前照灯</div>
-										</div>
-										<div class="line base-flex-between">
-											<div class="base-flex-horizontal">
-												<div class="desc">流水号:</div>
-												<div>20171114-01</div>
+	<body>
+		<div id="app">
+			<header  class="mui-bar mui-bar-nav">
+				<h1 class="mui-title">实验室确认</h1>
+			</header>
+      <div class="circle base-flex-center">
+				<img src="../../images/icon/search.png" class="right" @tap="searchEvent()">
+			</div>
+			<div class="mui-content">
+				<div id="slider" class="mui-slider  mui-fullscreen">
+					<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+						<a v-for="(item,index) in swipeList" :class="['mui-control-item',activeIndex==index ? 'mui-active':'']" :href="['#'+item.linkhref]">
+							{{item.title}}
+						</a>
+					</div>
+					<div class="mui-slider-group">
+						<div v-for="(item,index) in swipeList" :id="[item.linkhref]" :class="['mui-slider-item mui-control-content',activeIndex==index? 'mui-active':'']">
+							<div class="mui-scroll-wrapper">
+								<div :id="item.id" class="mui-scroll">
+									<ul class="mui-table-view">
+										<li class="mui-table-view-cell base-border-bottom" @tap="labItemClick()">
+											<div class="line base-flex-horizontal">
+												<div class="desc">灯具名称:</div>
+												<div>前照灯</div>
 											</div>
-											<div>2017-095</div>
-										</div>
-									</li>
-								</ul>
+											<div class="line base-flex-between">
+												<div class="base-flex-horizontal">
+													<div class="desc">流水号:</div>
+													<div>20171114-01</div>
+												</div>
+												<div>2017-095</div>
+											</div>
+										</li>
+									</ul>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+
 
 		<script src="../../js/mui.min.js"></script>
 		<script src="../../js/lib/vue.min.js" type="text/javascript" charset="utf-8"></script>
@@ -64,7 +69,7 @@
 			});
 			apptools.backQuit();
 			var vm=new Vue({
-				el:"#slider",
+				el:"#app",
 				data:{
 					activeIndex:0,
 					postInfo:{
@@ -80,13 +85,19 @@
 					
 				},		
 				methods:{
-					
+					labItemClick:function(){
+						webtool.openWindow('laboratory-detail');
+					},
+					searchEvent:function(){
+						webtool.openWindow('laboratory-search');
+					}
 				}			
 			})
 			//vue默认模式是异步渲染。就是你修改了data之后，不是立刻开始渲染DOM结构，而是异步执行。解决vue+滑动组件的冲突问题
 			vm.$nextTick(function () {
               //DOM 现在更新了
-              mui("#slider").slider();			 
+              mui("#slider").slider();		
+								
             })
 
 			//上下拉初始事件

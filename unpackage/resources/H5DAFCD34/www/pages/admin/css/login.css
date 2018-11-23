@@ -1,0 +1,100 @@
+.logo {
+	margin-top: 1.68rem;
+}
+
+.logo img {
+	width: 1.46rem;
+	border-radius: .15rem;
+}
+
+.main {
+	margin: 0 1.25rem;
+	margin-top: 1.23rem;
+	font-size: .2rem;
+}
+
+.line {
+	border-bottom: 1px solid #DDDDDD;
+	margin-bottom: .495rem;
+
+}
+
+.desc {
+	font-size: .28rem;
+	font-family: MicrosoftYaHei;
+	font-weight: 400;
+	color: rgba(46, 166, 223, 1);
+	line-height: .18rem;
+}
+
+.line .icon {
+	width: .3rem;
+	height: .39rem;
+}
+
+.line input {
+	margin-bottom: 0 !important;
+	border: none !important;
+}
+
+.forget {
+	text-align: right;
+	margin-bottom: .38rem;
+	font-size: .16rem;
+	font-family: MicrosoftYaHei;
+	font-weight: 400;
+	color: rgba(112, 112, 112, 1);
+	line-height: .18rem;
+}
+
+.line button {
+	background: rgba(45, 167, 223, 1);
+	border: 0 !important;
+	color: #FFFFFF;
+	font-size: .25rem;
+	height: .72rem;
+	padding: 0 !important;
+	border-radius: .36rem;
+}
+
+.mui-switch.mui-active {
+	background-color: #179FFE;
+	border-color: #179FFE;
+}
+
+/*placeholder字体颜色*/
+input::-webkit-input-placeholder {
+	color: #AAAAAA;
+	font-size: .18rem;
+}
+
+input::-moz-placeholder {
+	/* Mozilla Firefox 19+ */
+	color: #AAAAAA;
+	font-size: .18rem;
+}
+
+input:-moz-placeholder {
+	/* Mozilla Firefox 4 to 18 */
+	color: #AAAAAA;
+	font-size: .18rem;
+}
+
+input:-ms-input-placeholder {
+	/* Internet Explorer 10-11 */
+	color: #AAAAAA;
+	font-size: .18rem;
+}
+
+.reg {
+	position: absolute;
+	top: .71rem;
+	right: .4rem;
+	width: .58rem;
+	height: .28rem;
+	font-size: .28rem;
+	font-family: MicrosoftYaHei;
+	font-weight: 400;
+	color: rgba(45, 167, 223, 1);
+	line-height: .18rem;
+}

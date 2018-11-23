@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../../css/base.css" />
+		<link rel="stylesheet" type="text/css" href="css/login.css" />
+	</head>
+
+	<body>
+		<div id="app" class="mui-content base-bg-white mui-fullscreen">
+			<div class="logo base-flex-center">
+				<img src="../../images/icon/app-logo.png">
+			</div>
+			<div class="main">
+				<div class="line desc base-clear-border">
+					小糸用户登录
+				</div>
+				<div class="line base-flex-horizontal">
+					<img src="../../images/icon/username.png" class="icon"><input type="text" v-model="postInfo.username" placeholder="请输入帐号" />
+				</div>
+				<div class="line base-flex-horizontal" style="margin-bottom: .33rem ;">
+					<img src="../../images/icon/password.png" class="icon"><input type="password" v-model="postInfo.password" placeholder="请输入密码" />
+				</div>
+				<div class="forget">
+					忘记密码？
+				</div>
+				<div class="line base-clear-border">
+					<button class="mui-btn mui-btn-block" @tap="loginEvent">登录</button>
+				</div>
+			</div>
+		</div>
+
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/lib/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/lib/browser.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../config.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/app.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/babel" charset="UTF-8">
+			mui.init();		
+		    var _mainPage=null;
+			mui.plusReady(function(){
+				_mainPage = mui.preload({
+					url: '../root/index.html',
+					id: '../root/index.html',
+					styles: {
+						"render": "always",
+						"popGesture": "hide",
+						"bounce": "vertical",
+						"bounceBackground": "#efeff4",
+						"titleNView":  { //详情页原生导航配置
+							backgroundColor: '#f7f7f7', //导航栏背景色
+							titleText: '', //导航栏标题
+							titleColor: '#000000', //文字颜色
+							type: 'transparent', //透明渐变样							
+							splitLine: { //底部分割线
+								color: '#cccccc'
+							} 
+						}
+					}
+				});
+			})
+			
+			var vm=new Vue({
+				el:"#app",
+				data:{
+					switchOption:true,
+					postInfo:{
+						username:"",
+						password:""
+					}
+				},				
+				methods:{
+					loginEvent:function(){		
+						_mainPage.show('pop-in',300);						
+					}
+				},
+			});
+			//获取原始窗口的高度
+			var originalHeight=document.documentElement.clientHeight || document.body.clientHeight;			
+			window.onresize=function(){			
+					//软键盘弹起与隐藏  都会引起窗口的高度发生变化
+					var  resizeHeight=document.documentElement.clientHeight || document.body.clientHeight;		
+					if(resizeHeight*1<originalHeight*1){ //resizeHeight<originalHeight证明窗口被挤压了		
+							plus.webview.currentWebview().setStyle({  height:originalHeight });	
+					}
+			}
+			apptools.iosBlur();
+			apptools.backQuit();
+		</script>
+	</body>
+
+</html>

@@ -9,12 +9,12 @@
     <link rel="stylesheet" type="text/css" href="../../css/base.css"/>
 	<style>
 		.mui-tab-item img {
-			width: 0.35rem;
+			width: 0.4rem;
 		}
 
 		.mui-tab-label {
-			font-size: 0.15rem;
-			line-height: 0.13rem;
+			font-size: 0.2rem;
+			line-height: 0.2rem;
 		}
         .mui-bar{
 			background-color: #FFFFFF !important;
@@ -73,7 +73,7 @@
 					});
 					if(this.activeIndex !== this.targetIndex){						
 						plus.webview.getWebviewById(page[this.activeIndex]).hide();
-						plus.webview.getWebviewById(page[this.targetIndex]).show();
+						plus.webview.getWebviewById(page[this.targetIndex]).show('fade-in');
 						this.activeIndex=this.targetIndex;	
 					}				
 				}
@@ -81,8 +81,8 @@
 		});
 		apptools.backQuit();
 		mui.plusReady(function(){
-			//预加载页面
-			var wb=plus.webview.getLaunchWebview();
+			//预加载子页面
+			var wb=plus.webview.currentWebview();
 			let index=0;
 			for(let i=0;i<page.length; i++){
 				let pageStyle;

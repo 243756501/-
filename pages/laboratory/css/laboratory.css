@@ -1,8 +1,7 @@
 .mui-slider-indicator.mui-segmented-control {
 	background-color: #FFFFFF;
-	font-size: .2rem;
+	font-size: .24rem;
 	color: #AAAAAA;
-	margin: .15rem 0;
 }
 
 .mui-slider .mui-segmented-control.mui-segmented-control-inverted~.mui-slider-group .mui-slider-item {
@@ -10,8 +9,11 @@
 }
 
 .mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
-	color: #179FFE;
-	border-bottom: 2px solid #179FFE !important;
+	border-bottom: 2px solid rgba(0, 160, 233, 1) !important;
+	font-size: .24rem;
+	font-family: SourceHanSansCN-Regular;
+	font-weight: 400;
+	color: rgba(0, 160, 233, 1);
 }
 
 .mui-segmented-control.mui-segmented-control-inverted .mui-control-item {
@@ -24,7 +26,7 @@
 }
 
 .line {
-	font-size: .2rem;
+	font-size: .24rem;
 }
 
 .line .desc {
@@ -33,8 +35,21 @@
 }
 
 .mui-table-view-cell {
-	padding: 5px 15px;
+	padding: .2rem .4rem;
 }
-.mui-pull-bottom-tips {
-	background-color: #FFFFFF !important;
+
+.circle {
+	background-color: #179FFE;
+	position: absolute;
+	right: 8%;
+	bottom: 10%;
+	border-radius: 50%;
+	width: 1rem;
+	height: 1rem;
+	z-index: 99999;
+	box-shadow: 0 5px 10px #AAAAAA;
+}
+
+.circle img {
+	width: .5rem;
 }

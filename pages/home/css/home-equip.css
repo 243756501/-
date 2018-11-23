@@ -1,0 +1,59 @@
+.info {
+	font-size: .22rem;
+}
+
+.mui-table-view-cell .show .info {
+	height: 1.3rem;
+}
+
+.mui-table-view-cell .show .info .line {
+	height: .42rem;
+}
+
+.checkbox {
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 50px;
+	height: 50px;
+}
+
+.checkbox .dots {
+	width: 18px;
+	height: 18px;
+	border: 1px solid #000000;
+	border-radius: 50%;
+}
+
+.checkbox .dot {
+	background-color: #000000;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+}
+
+.mask {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	background: rgba(0, 0, 0, 0.2);
+	height: 95px;
+	top: 0px;
+	z-index: 9999;
+	color: #FFFFFF;
+	padding: 0 .74rem !important;
+}
+
+.mask .button {
+	width: .88rem;
+	height: .5rem;
+	border: 1px solid #FFFFFF;
+}
+
+.mask .desc {
+	height: .32rem;
+	font-size: .34rem;
+	font-family: SourceHanSansCN-Regular;
+	font-weight: 400;
+	color: rgba(255, 255, 255, 1);
+}

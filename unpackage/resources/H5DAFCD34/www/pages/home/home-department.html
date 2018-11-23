@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../../css/base.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/lib/pull-top-tips.css" />
+		<link rel="stylesheet" type="text/css" href="css/home-department.css"/>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">部门通知</h1>
+		</header>
+		<div id="app" class="mui-content">
+			<div class="mui-scroll-wrapper   base-content">
+				<div class="mui-scroll">
+					<ul class="mui-table-view mui-clearfix list">
+						<li class="mui-table-view-cell base-flex-between" @tap="ItemClick(1)">
+							<div class="left base-flex-horizontal">
+								<img src="../../images/pics/department-icon2.png" class="icon">
+								<div class="info">
+									<div>高斯技术<img src="../../images/pics/department-attach.png" class="attach"/></div>
+									<div>上海小糸车灯有限公司</div>
+								</div>
+							</div>
+							<div class="right">
+								<img src="../../images/pics/department-dot.png" >
+								<div class="time">08:35</div>
+								<div>[ 测试部 ]</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/lib/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/lib/browser.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../config.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/app.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/lib/mui.pullToRefresh.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/lib/mui.pullToRefresh.material.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/babel" charset="UTF-8">
+			mui.init();			
+			var vm=new Vue({
+				el:"#app",
+				data:{
+				},
+				methods:{
+					ItemClick:function(mesId){
+						webtool.openWindow('home-department-detail',{ id: mesId })
+					}
+				}			
+			});
+           
+      //ios软键盘不会自动关闭
+      apptools.iosBlur();
+			webtool.backQuit();
+			vm.$nextTick(function () {
+				//初始化滑动
+				mui('.mui-scroll-wrapper').scroll();
+				//初始化上下拉
+				mui('.mui-scroll').pullToRefresh({
+					up:{
+						callback:function(){
+							let pullObj=this;
+							pullObj.endPullUpToRefresh(true);
+						}
+					},
+					down:{
+						callback:function(){
+							let pullObj=this;
+							pullObj.endPullDownToRefresh(true);
+						}
+					}
+				});
+			});
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../../css/base.css" />
+		<link rel="stylesheet" type="text/css" href="css/home-department-detail.css"/>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">基本内容</h1>
+		</header>
+		<div id="app" class="mui-content" v-if="load">
+			<div class="mui-scroll-wrapper mui-fullscreen base-content">
+				<div class="mui-scroll">
+					<div class="main" @tap="downloadZipEvent(1)">
+						<div class="head">
+							<div class="title">上海小糸车灯有限公司</div>
+							<div class="base-flex-between">
+								<div class="tag">高斯技术</div>
+								<div>08:35</div>
+							</div>
+						</div>
+						<div class="content">
+							上海小糸车灯有限公司上海小糸车灯有限公司上海小糸车灯有限公司上海小糸车灯有限公司上海小糸车灯有限公司上海小糸车灯有限公司上海小糸车灯有限公司上海小糸车灯有限公司上海小糸车灯有限公司上海小糸车灯有限公司上海小糸车灯有限公司
+						</div>
+						<div class="attach base-flex-horizontal">
+							<img src="../../images/pics/zip.png" />
+							<div class="zip">
+								<div class="name">上海小糸.rar</div>
+								<div class="size">253.12k</div>
+							</div>
+						</div>
+					</div>				
+				</div>
+			</div>
+		</div>
+
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/lib/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/lib/browser.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../config.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/app.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/babel" charset="UTF-8">
+			mui.init();		
+			var loading;
+			mui.plusReady(function () {
+				loading=apptools.loading();
+			})
+			var vm=new Vue({
+				el:"#app",
+				data:{
+					load:false
+				},
+				methods:{
+					downloadZipEvent:function(zipId){
+						alert('开始下载...');
+						
+					}
+				}			
+			});
+          
+      //ios软键盘不会自动关闭
+      apptools.iosBlur();
+		  webtool.backQuit();
+
+			setTimeout(function(){		
+				loading.close();
+				vm.load=true;
+			},2000)
+			vm.$nextTick(function () {
+				//初始化滑动				
+				mui('.mui-scroll-wrapper').scroll();
+			});
+		</script>
+	</body>
+
+</html>

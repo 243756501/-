@@ -4,9 +4,11 @@
 .mui-bar-nav {
 	background-color: #179FFE;
 }
+	
 /*背景白色*/
 .base-bg-white{
-	background-color: #FFFFFF;
+	background-color: #FFFFFF;	
+	font-size: .34rem !important;
 }
 
 .mui-bar-nav .mui-title {
@@ -18,23 +20,36 @@
 }
 
 /*标题右侧图标*/
+.mui-bar-nav .mui-btn {
+	background-color: #179FFE;
+	color: #FFFFFF;
+	border: 1px solid #179FFE !important;
+	position: absolute;
+	right: .1rem;
+	padding: .08rem !important;
+}
 .mui-bar-nav .right {
-	width: .3rem;
 	position: absolute;
 	right: .3rem;
-	top: .2rem;
+	top: .3rem;
+    margin-top: -.15rem;
+}
+.mui-bar-nav img{
+	width: 20px;
+	top: 20px !important;
 }
 
 /*标题栏返回键*/
 .mui-bar-nav.mui-bar .mui-icon {
 	color: #FFFFFF;
+	width: .23rem;
+	height: .4rem;
 }
 
 /*上下拉插件样式*/
-.mui-pull-bottom-tips {
-	background-color: #EFEFF4 !important;
+.mui-pull-bottom-tips{
+	background-color: #efeff4 !important;
 }
-
 .mui-pull-loading {
 	font-size: .18rem;
 }
@@ -103,4 +118,22 @@ input:-ms-input-placeholder {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+}
+
+.mui-bar-nav~.mui-content .mui-slider.mui-fullscreen{
+	top: 55px;
+}
+.mui-fullscreen .mui-segmented-control~.mui-slider-group{
+	top: 50px !important;
+}
+.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
+	border-bottom: 2px solid rgba(0,160,233,1) !important;
+    font-size:.24rem;
+    font-family:SourceHanSansCN-Regular;
+    font-weight:400;
+    color:rgba(0,160,233,1);
+}
+.mui-segmented-control.mui-segmented-control-inverted .mui-control-item {
+	margin: 0 .3rem;
+	display: inline-table !important;
 }

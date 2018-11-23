@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../../css/base.css" />
+		<link rel="stylesheet" type="text/css" href="css/sample-get-detail.css" />
+		<style>
+			.card{
+				height: auto;
+				flex: 0 !important;
+			}
+			.card .line{
+				color:#A2A2A2;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-icon mui-action-back mui-icon-back"></a>
+			<h1 class="mui-title">基本信息</h1>
+			<button class="mui-btn right">还样</button>
+		</header>
+		<div id="app" class="base-content mui-fullscreen" style="display: flex;flex-direction: column;">
+			<div class="card" style="flex: 1;">
+				<div class="line base-flex-between">
+					<div>流水号</div>
+					<div>20171114-01</div>
+				</div>
+				<div class="line base-flex-between">
+					<div>厂家名称</div>
+					<div>佳美达(美德)玩具有限公司</div>
+				</div>
+				<div class="line base-flex-between">
+					<div>车型名称</div>
+					<div>迈锐宝</div>
+				</div>
+				<div class="line base-flex-between">
+					<div>灯具名称</div>
+					<div>前照明美国向</div>
+				</div>				
+			</div>
+			<div style="flex:1;">
+				<div id="slider" class="mui-slider">
+					<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted base-bg-white">
+						<a v-for="(item,index) in swipeList" :class="['mui-control-item base-flex-horizontal',activeIndex==index ? 'mui-active':'']"
+						 :href="['#'+item.linkhref]">
+							{{item.title}}
+						</a>
+					</div>
+					<div class="mui-slider-group">
+						<div v-for="(item,index) in swipeList" :id="[item.linkhref]" :class="['mui-slider-item mui-control-content',activeIndex==index? 'mui-active':'']">
+							<div class="base-bg-white">
+								<div :id="item.id">
+									<ul class="mui-table-view mui-clearfix">
+										<li class="mui-table-view-cell base-border-bottom" @tap="sampleItemClick()">
+											<div class="line base-flex-horizontal">
+												<div>LED脉冲点灯试验：初测配光</div>
+											</div>
+											<div class="line base-flex-between">
+												<div class="base-flex-horizontal desc">
+													<div>实验员:</div>
+													<div>小白</div>
+												</div>
+												<div>【任务分配】</div>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<script src="../../js/mui.min.js"></script>
+			<script src="../../js/lib/vue.min.js" type="text/javascript" charset="utf-8"></script>
+			<script src="../../js/lib/browser.min.js" type="text/javascript" charset="utf-8"></script>
+			<script src="../../config.js" type="text/javascript" charset="utf-8"></script>
+			<script src="../../js/app.js" type="text/javascript" charset="utf-8"></script>
+			<script type="text/babel" charset="UTF-8">
+				mui.init();
+			//初始化区域滑动
+			mui('.mui-scroll-wrapper').scroll({
+			deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
+			});
+			webtool.backQuit();
+			var vm=new Vue({
+				el:"#app",
+				data:{
+					activeIndex:0,
+					postInfo:{
+						page:1,//当前页面数
+						pageSize:10,//分页条数
+					},
+					swipeList:[
+						{ id:1,title:"样品列表",linkhref:"item1mobile",datalist:[] },
+						{ id:2,title:"操作流程",linkhref:"item2mobile",datalist:[] },
+					],
+					
+				},		
+				methods:{
+					sampleItemClick:function(){
+						webtool.openWindow('sample-get-detail-info');
+					}
+				}			
+			})
+			//vue默认模式是异步渲染。就是你修改了data之后，不是立刻开始渲染DOM结构，而是异步执行。解决vue+滑动组件的冲突问题
+			vm.$nextTick(function () {
+              //DOM 现在更新了
+        mui("#slider").slider();		
+					 
+     });
+		 
+
+		
+		</script>
+	</body>
+
+</html>

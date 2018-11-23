@@ -8,41 +8,25 @@
 		<link href="../../css/mui.min.css" rel="stylesheet" />
 		<link rel="stylesheet" type="text/css" href="../../css/base.css" />
 		<link rel="stylesheet" type="text/css" href="../../css/lib/pull-top-tips.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/lib/animate.min.css" />
 		<link rel="stylesheet" type="text/css" href="css/home-spare.css" />
-		<style>
-			.info{
-				font-size: .22rem;
-			}
-			.mui-table-view-cell .show .info{
-				height: .75rem;
-			}
-			.checkbox{
-				width: .24rem;
-				height: .24rem;
-				border-radius: 50%;
-				border: 1px solid #000000;
-			}
-			.checkbox .dot{
-				background-color: #000000;
-				width: .18rem;
-				height: .18rem;
-				border-radius: 50%;
-			}
-		</style>
+		<link rel="stylesheet" type="text/css" href="css/home-equip.css" />
 	</head>
 
 	<body>
-		<div class="mask">
-			
-		</div>
 		<header class="mui-bar mui-bar-nav">
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 			<h1 class="mui-title">支架管理</h1>
 		</header>
 		<div id="app" class="mui-content">
+			<div class="mask base-flex-between animated fadeIn" v-if="maskShow">
+				<div class="button base-flex-center" @tap="cancelMask()">取消</div>
+				<div class="desc">已选{{count}}个</div>
+				<div class="button base-flex-center" @tap="getSupport()">借阅</div>
+			</div>
 			<div class="search">
 				<div class="line base-flex-horizontal">
-					<input type="text" placeholder="请输入设备名称/编号" v-model="searchWords">
+					<input type="text" placeholder="请输入支架名称/编号" v-model="searchWords">
 					<div class="container base-flex-center" @tap="searchEvent()">
 						<img src="../../images/icon/search.png" class="icon" />
 					</div>
@@ -52,8 +36,8 @@
 				<div class="mui-scroll">
 					<ul class="mui-table-view mui-clearfix">
 						<li class="mui-table-view-cell mui-collapse">
-							<a class="show" @tap="itemShowEvent(0)">								
-								<div class="info base-flex-between ">
+							<a class="show" @tap="itemShowEvent(0)">
+								<div class="info">
 									<div class="line">
 										<div>支架名称</div>
 										<div class="base-flex-horizontal">
@@ -61,10 +45,13 @@
 											<div>00001-1</div>
 										</div>
 									</div>
-									<div class="line checkbox base-flex-center" @tap="itemCheckEvent()">
-										 <div class="dot"></div>
+								</div>
+								<div class="checkbox base-flex-center" @tap.stop="itemCheckEvent()">
+									<div class="base-flex-center dots">
+										<div class="dot"></div>
 									</div>
 								</div>
+
 								<div class="tool base-flex-between" v-if="activeIndex !== 0">
 									<div>基本信息</div>
 									<div class="action">展开 <i class="mui-icon mui-icon-arrowright"></i></div>
@@ -90,8 +77,8 @@
 								<div class="base-flex-between line">
 									<div>借阅时间</div>
 									<div>2018-06-04</div>
-								</div>							
-								<div class="base-flex-between line" @tap="pickUpEvent()">
+								</div>
+								<div class="base-flex-between line" @tap="pickUpEvent(0)">
 									<div class="split"></div>
 									<div class="action">收起 <i class="mui-icon mui-icon-arrowup"></i></div>
 								</div>
@@ -115,23 +102,36 @@
 				el:"#app",
 				data:{
 					searchWords:"",
-					activeIndex:2
+					activeIndex: -1,
+					maskShow:false,
+					count:0
 				},				
 				methods:{
+					//取消借阅
+					cancelMask:function(){
+						this.maskShow=false;
+						this.count=0;
+					},
+					getSupport:function(){
+						this.maskShow=false;
+						this.count=0;
+					},
+					itemCheckEvent:function(){
+						this.count++;
+						this.maskShow=true;
+					},
 					searchEvent:function(){
 						alert("搜索的关键字:  "+this.searchWords)
 					},
 					itemShowEvent:function(index){
 						this.activeIndex==index ? this.activeIndex= -1 : this.activeIndex=index;				
 					},
-					pickUpEvent:function(){
-						mui.each(document.querySelectorAll('.mui-table-view-cell'),function(index,item){
+					pickUpEvent:function(index){
+						mui.each(document.querySelectorAll('.mui-table-view-cell'),(index,item)=>{
+							this.activeIndex=-1;	
 							item.setAttribute('class',"mui-table-view-cell mui-collapse");
 						})
 					},
-					itemCheckEvent:function(){
-						alert(111)
-					}
 				}			
 			});
 			mui('.mui-scroll').pullToRefresh({
@@ -153,6 +153,7 @@
 				//ios软键盘不会自动关闭
 				apptools.iosBlur();
 				webtool.backQuit();
+			
 			
 		</script>
 	</body>

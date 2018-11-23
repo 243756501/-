@@ -4,6 +4,7 @@
 
 .search {
 	background-color: #179FFE;
+	height: 50px;
 }
 
 .search input {
@@ -12,8 +13,8 @@
 	color: #FFFFFF;
 	width: 100%;
 	margin-bottom: 0;
-	font-size: .18rem;
-	height: .5rem;
+	font-size: .22rem;
+	height: 35px;
 }
 
 .mui-table-view-cell.mui-active {
@@ -21,22 +22,24 @@
 }
 
 .search .line {
-	padding: .25rem;
+	padding: 5px 12.5px;
 }
 
 .search .line img {
-	width: .3rem;
-	height: .3rem;
+	width: 20px;
+	height: 20px;
 }
 
 .line .container {
-	height: .5rem;
+	height: 35px;
 	background-color: #57C0F1;
-	padding: 0 .1rem;
+	padding: 0 .15rem;
+	position: relative;
+	left: -0.05rem;
 }
 
 .mui-scroll-wrapper {
-	margin-top: 1.7rem;
+	margin-top: 100px;
 }
 
 .mui-table-view-cell:after {
@@ -49,7 +52,8 @@
 
 .mui-table-view {
 	background-color: #EFEFF4;
-	font-size: .18rem;
+	font-size: .24rem;
+	margin-top: .3rem;
 }
 
 .mui-table-view-cell {
@@ -60,7 +64,7 @@
 }
 
 .mui-table-view-cell i {
-	font-size: .18rem;
+	font-size: .24rem;
 }
 
 .mui-table-view-cell .line .desc {
@@ -69,7 +73,7 @@
 
 .mui-table-view-cell .show .info {
 	border-bottom: 1px dashed #ADADAD;
-	height: .7rem;
+	height: .85rem;
 }
 
 .mui-table-view-cell .show .tool {
@@ -93,7 +97,7 @@
 
 .mui-collapse-content button {
 	margin-bottom: 0;
-	font-size: .18rem;
+	font-size: .24rem;
 	height: .45rem !important;
 	padding: 0;
 	font-weight: bold;

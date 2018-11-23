@@ -1,0 +1,118 @@
+.mui-bar {
+	box-shadow: none !important;
+}
+
+.search {
+	background-color: #179FFE;
+	height: .8rem;
+}
+
+.search input {
+	border: 0 !important;
+	background-color: #57c0f1;
+	color: #FFFFFF;
+	width: 100%;
+	margin-bottom: 0;
+	font-size: .22rem;
+	height: .56rem;
+}
+
+.mui-table-view-cell.mui-active {
+	background-color: #FFFFFF;
+}
+
+.search .line {
+	padding: 0 .25rem;
+}
+
+.search .line img {
+	width: .29rem;
+	height: .3rem;
+}
+
+.line .container {
+	height: .56rem;
+	background-color: #57C0F1;
+	padding: 0 .15rem;
+	position: relative;
+	left: -0.05rem;
+}
+
+.mui-scroll-wrapper {
+	margin-top: 1.7rem;
+}
+
+.mui-table-view-cell:after {
+	background-color: #FFFFFF;
+}
+
+.mui-table-view-cell.mui-collapse.mui-active {
+	margin-top: .15rem;
+}
+
+.mui-table-view {
+	background-color: #EFEFF4;
+	font-size: .24rem;
+	margin-top: .3rem;
+}
+
+.mui-table-view-cell {
+	background-color: #FFFFFF;
+	margin: .15rem;
+	border-radius: .1rem;
+	padding: 8px 12px;
+}
+
+.mui-table-view-cell i {
+	font-size: .24rem;
+}
+
+.mui-table-view-cell .line .desc {
+	color: #ADADAD;
+}
+
+.mui-table-view-cell .show .info {
+	border-bottom: 1px dashed #ADADAD;
+	height: .85rem;
+}
+
+.mui-table-view-cell .show .tool {
+	height: .5rem;
+}
+
+.mui-table-view-cell .show .tag {
+	position: absolute;
+	width: .8rem;
+	right: -.08rem;
+	top: .05rem;
+}
+
+.mui-table-view-cell .show .tool .action {
+	color: #179FFE;
+}
+
+.mui-collapse-content {
+	color: #ADADAD;
+}
+
+.mui-collapse-content button {
+	margin-bottom: 0;
+	font-size: .24rem;
+	height: .45rem !important;
+	padding: 0;
+	font-weight: bold;
+	margin-top: .05rem;
+}
+
+.mui-collapse-content .line {
+	margin-bottom: .06rem;
+}
+
+.mui-collapse-content .line .split {
+	border-bottom: 1px dashed #ADADAD;
+	width: 85%;
+}
+
+.mui-collapse-content .line .action {
+	color: #179FFE;
+}

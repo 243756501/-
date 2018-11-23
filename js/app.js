@@ -1,7 +1,7 @@
 /*app公共方法*/
 
 /*rem适配方案*/
-document.documentElement.style.fontSize = document.documentElement.clientWidth / 640*100 + 'px';
+document.documentElement.style.fontSize = document.documentElement.clientWidth / 750*100 + 'px';
 
 //app工具方法
 var first = false; //返回键初值
@@ -172,7 +172,7 @@ var apptools = {
 	 * 判断是否登陆
 	 */
 	isLoginOrNot: function() {
-		var userInfo = localStorage.getItem('userInfo');
+		var userInfo = localStorage.getItem(CONFIG.STORAGE_PRE+'userInfo');
 		if(!userInfo) {
 			return false;
 		} else {
@@ -378,20 +378,20 @@ var apptools = {
 	},
 
 	getUserInfo: function() {
-		var userInfo = localStorage.getItem('userInfo');
+		var userInfo = localStorage.getItem(CONFIG.STORAGE_PRE+'userInfo');
 		return userInfo;
 	},
 	/*
 	 * 注销，清除用户信息
 	 */
 	clearUserInfo: function() {
-		localStorage.setItem('userInfo', '');
+		localStorage.setItem(CONFIG.STORAGE_PRE+'userInfo', '');
 	},
 	/*
 	 * 保存用户信息
 	 */
 	setUserInfo: function(data) {
-		localStorage.setItem('userInfo', JSON.stringify(data));
+		localStorage.setItem(CONFIG.STORAGE_PRE+'userInfo', JSON.stringify(data));
 	},
 	/*
 	 * 确认是否退出app
@@ -473,20 +473,23 @@ var webtool = {
 		}
 	},
 	/*打开页面二次封装*/
-	openWindow:function(webview,data){
+	/*打开页面二次封装*/
+	openWindow:function(webview,data,immser){
 		var webId = webview;
 		if(~webId.indexOf('/')) {
 			webId = webId.substr(webId.lastIndexOf('/') + 1);
 		}
-
+		immser=immser || "";
+		immser=="" ? immser={ statusbar: { background: CONFIG.IMMERSTION_COLOR }} : immser={};
 		mui.openWindow({
 			url: webview + '.html',
 			id: webId,
-			styles: { 
-				statusbar: { background: CONFIG.IMMERSTION_COLOR },
-			},
+			styles: immser,
 			extras:data,			
-			aniShow: 'pop-in',
+			show:{
+				aniShow:"pop-in",
+				duration:300
+			},
 			waiting:{
 				title:'加载中...',
 				options: {

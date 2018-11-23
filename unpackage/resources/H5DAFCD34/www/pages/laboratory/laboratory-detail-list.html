@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../../css/base.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/lib/pull-top-tips.css" />
+		<link rel="stylesheet" type="text/css" href="css/laboratory-detail.css" />
+		<style>
+			.mui-table-view{
+				margin-top: .18rem;
+				font-family:SourceHanSansCN-Regular;
+                font-weight:400;
+				font-size: .27rem;
+                color:rgba(95,95,95,1);
+			}
+			.mui-badge{
+				width: .34rem;
+				height: .34rem;
+				background-color: #179FFE;
+				color: #FFFFFF;
+				right: .7rem !important;
+				padding: 0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-icon mui-icon-back mui-action-back"></a>
+			<h1 class="mui-title">基本信息</h1>
+		</header>
+		<div id="app" class="mui-scroll-wrapper base-content">
+			<div class="mui-scroll">
+				<div class="card" style="flex: 1;">
+					<div class="line base-flex-between">
+						<div>加急</div>
+						<div>是</div>
+					</div>
+					<div class="line base-flex-between">
+						<div>项目名称</div>
+						<div>配光性能</div>
+					</div>
+					<div class="line base-flex-between">
+						<div>执行标准</div>
+						<div>TL909-APR-2013</div>
+					</div>
+					<div class="line base-flex-between">
+						<div>标准章节号</div>
+						<div>6.4.10</div>
+					</div>
+					<div class="line base-flex-between">
+						<div>试验数量(L)</div>
+						<div>1</div>
+					</div>
+					<div class="line base-flex-between">
+						<div>试验数量(R)</div>
+						<div>1</div>
+					</div>
+					<div class="line base-flex-between">
+						<div>材料牌号/色号/颜色</div>
+						<div>黄色</div>
+					</div>
+					<div class="line base-flex-between">
+						<div>表面处理及满足标准</div>
+						<div>满足标准</div>
+					</div>
+					<div class="line base-flex-between">
+						<div>项目备注</div>
+					</div>
+					<div class="line">
+						<textarea></textarea>
+					</div>
+				</div>
+				<ul class="mui-table-view mui-clearfix">
+					<li class="mui-table-view-cell" v-for="(item,index) in itemOptionList" @tap="listItemClick()">
+						<a class="mui-navigate-right">
+							{{item.title}}
+							<span class="mui-badge base-flex-center" v-if="item.undo>0">{{item.undo}}</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/lib/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/lib/browser.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../config.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/app.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/lib/mui.pullToRefresh.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/lib/mui.pullToRefresh.material.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/babel" charset="UTF-8">
+			mui.init();
+			mui.plusReady(function(){})
+			webtool.backQuit();
+			var vm=new Vue({
+				el:"#app",
+				data:{
+					itemOptionList:[
+						{ id:1,title:"试验方法",undo:1},
+						{ id:2,title:"试验方法英语",undo:0},
+						{ id:3,title:"试验类型",undo:1},
+						{ id:4,title:"判定依据",undo:2},
+						{ id:5,title:"判定依据英语",undo:5},
+						{ id:6,title:"作业指导书",undo:0},
+						{ id:7,title:"记录",undo:0},
+						{ id:8,title:"试验特殊说明",undo:0},
+						{ id:9,title:"业务流程记录",undo:1}
+					]
+					
+				},		
+				methods:{
+					listItemClick:function(){
+						webtool.openWindow('laboratory-detail-list-info');
+					}
+				}			
+			})
+			//vue默认模式是异步渲染。就是你修改了data之后，不是立刻开始渲染DOM结构，而是异步执行。解决vue+滑动组件的冲突问题
+			vm.$nextTick(function () {
+             	mui('.mui-scroll-wrapper').scroll();
+            })
+
+			
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,31 @@
+.list {
+	margin-top: .15rem;
+	font-size: .2rem;
+}
+
+.list .right {
+	color: #ADADAD;
+}
+
+.list .right div {
+	text-align: right;
+}
+
+.list .right img {
+	position: absolute;
+	width: .15rem;
+	right: .15rem;
+}
+
+.list .left .icon {
+	width: .5rem;
+}
+
+.list .left .info {
+	margin-left: .2rem;
+}
+
+.list .left .info .attach {
+	width: .2rem;
+	margin-left: .1rem;
+}

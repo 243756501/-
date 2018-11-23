@@ -1,0 +1,59 @@
+.card {
+	margin-top: .18rem;
+	padding: .15rem .39rem;
+	font-size: .24rem;
+	color: #A2A2A2;
+	font-weight: 400;
+	font-family: SourceHanSansCN-Regular;
+	background-color: #FFFFFF;
+}
+
+.card .line {
+	font-size: .24rem;
+	line-height: .45rem;
+}
+
+.card .line button {
+	background-color: #179FFE;
+	color: #FFFFFF;
+	font-size: .2rem;
+	width: .8rem;
+	height: .5rem;
+	padding: 0;
+}
+
+.btnline {
+	padding: .41rem .4rem 0 .4rem;
+}
+
+.extra {
+	margin-top: .15rem;
+	padding: .15rem .39rem 0 .39rem;
+	font-size: .28rem !important;
+}
+
+.extra .title {
+	color: #888888;
+	font-size: .34rem;
+	padding: .23rem 0;
+}
+
+.extra .item {
+	padding: .16rem 0 0 0;
+}
+
+.extra .item .desc {
+	font-family: SourceHanSansCN-Regular;
+	font-weight: 400;
+	color: rgba(197, 197, 197, 1);
+}
+
+.extra .item .state {
+	font-family: SourceHanSansCN-Regular;
+	font-weight: 400;
+	color: rgba(0, 160, 233, 1);
+}
+
+.extra .item .bottom {
+	margin-top: .13rem;
+}

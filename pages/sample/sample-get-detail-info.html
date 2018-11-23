@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../../css/base.css" />
+		<style>
+			.card{
+        background:rgba(255,255,255,1);
+        border-radius:.15rem;
+				padding: .2rem;
+				font-size: .24rem;
+				line-height: .28rem;
+				font-family:SourceHanSansCN-Regular;
+        font-weight:400;
+				color: #A2A2A2;
+				margin: .2rem;
+			}
+			.card .line{
+				padding: .1rem 0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-icon mui-action-back mui-icon-back"></a>
+			<h1 class="mui-title">基本信息</h1>
+		</header>
+		<div class="mui-content">
+			<div class="card">
+				<div class="line base-flex-between">
+					<div>项目名称</div><div>LED脉冲点灯试验:初测配光</div>
+				</div>
+				<div class="line base-flex-between">
+					<div>实验员</div><div>杨晨</div>
+				</div>
+				<div class="line base-flex-between">
+					<div>执行标准</div><div>TL909 APR-2013</div>
+				</div>
+				<div class="line base-flex-between">
+					<div>标准名称</div><div>TL909 APR-2013</div>
+				</div>
+				<div class="line base-flex-between">
+					<div>标准章节号</div><div>6.4.10</div>
+				</div>
+				<div class="line base-flex-between">
+					<div>委外原因</div><div>***********</div>
+				</div>
+				<div class="line base-flex-between">
+					<div>序号</div><div>01</div>
+				</div>
+				<div class="line base-flex-between">
+					<div>项目状态</div><div>【任务分配】</div>
+				</div>
+			</div>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/lib/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/lib/browser.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../config.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/app.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/babel" charset="UTF-8">
+			mui.init();
+			//初始化区域滑动
+			mui('.mui-scroll-wrapper').scroll({
+			deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
+			});
+			webtool.backQuit();
+			var vm=new Vue({
+				el:"#app",
+				data:{
+					
+					
+				},		
+				methods:{
+					
+				}			
+			})
+					 
+   
+		
+		</script>
+	</body>
+
+</html>

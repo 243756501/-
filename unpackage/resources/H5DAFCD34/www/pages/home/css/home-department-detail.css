@@ -1,0 +1,48 @@
+.main {
+	font-size: .2rem;
+	padding: .15rem;
+	color: #ADADAD;
+}
+
+.head {
+	background-color: #FFFFFF;
+	padding: .15rem;
+	border-radius: .1rem;
+}
+
+.head .title {
+	font-size: .22rem;
+	color: #000000;
+}
+
+.head .tag {
+	color: #179FFE;
+}
+
+.content {
+	border-top: 1px dashed #EFEFF4;
+	background-color: #FFFFFF;
+	border-radius: .1rem;
+	padding: .15rem;
+	text-indent: 2em;
+}
+
+.attach {
+	border-top: 1px dashed #EFEFF4;
+	background-color: #FFFFFF;
+	border-radius: .1rem;
+	padding: .2rem .15rem;
+}
+
+.attach img {
+	width: .6rem;
+	margin-right: .2rem;
+}
+
+.zip {
+	line-height: .27rem;
+}
+
+.zip .name {
+	color: #333333;
+}
